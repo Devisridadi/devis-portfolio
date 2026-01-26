@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ExternalLink, Cat, Dog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import petshopImage from "@/assets/project-petshop.jpg";
-import heartImage from "@/assets/project-heart.jpg";
+import smartvotingImage from "@/assets/project-smartvoting.jpg";
 import inventoryImage from "@/assets/project-inventory.jpg";
 
 const projects = [
@@ -16,10 +16,10 @@ const projects = [
     link: "#",
   },
   {
-    title: "Heart Disease Prediction",
-    description: "Machine learning model that predicts heart disease risk based on patient health data. Implements data preprocessing and classification algorithms.",
-    image: heartImage,
-    tech: ["Python", "Pandas", "Scikit-learn", "Jupyter"],
+    title: "SmartVoting Platform",
+    description: "Secure, AI-powered electronic voting platform with biometric authentication (Face Recognition with Liveness Detection) to prevent impersonation. Features comprehensive Admin Panel for election management and real-time results visualization.",
+    image: smartvotingImage,
+    tech: ["React.js", "Node.js", "Python", "Flask", "Supabase", "Face Recognition"],
     link: "#",
   },
   {
@@ -34,6 +34,7 @@ const projects = [
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -42,6 +43,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.15 }}
       className="glass-card-hover overflow-hidden group relative"
+      onMouseEnter={() => project.title === "SmartVoting Platform" && setIsHovered(true)}
+      onMouseLeave={() => project.title === "SmartVoting Platform" && setIsHovered(false)}
     >
       {/* Project Image */}
       <div className="relative h-48 md:h-56 overflow-hidden">
@@ -126,6 +129,229 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           >
             <div className="dog-run" />
           </motion.div>
+        </div>
+      )}
+
+      {/* SmartVoting Animation - Enhanced Face Recognition Scanner */}
+      {project.title === "SmartVoting Platform" && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 100 }}>
+          {/* Pulse Border Effect */}
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              boxShadow: isHovered
+                ? [
+                  '0 0 0 0 rgba(59, 130, 246, 0)',
+                  '0 0 0 4px rgba(59, 130, 246, 0.4)',
+                  '0 0 0 0 rgba(59, 130, 246, 0)'
+                ]
+                : '0 0 0 0 rgba(59, 130, 246, 0)'
+            }}
+            transition={{ duration: 2, repeat: isHovered ? Infinity : 0 }}
+            style={{ borderRadius: '12px' }}
+          />
+
+          {/* Corner Brackets (Camera Frame) - Always Visible */}
+          <motion.div
+            animate={{ opacity: 1 }}
+            style={{ position: 'absolute', inset: '16px' }}
+          >
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '40px', height: '40px', borderTop: '3px solid #3b82f6', borderLeft: '3px solid #3b82f6' }} />
+            <div style={{ position: 'absolute', top: 0, right: 0, width: '40px', height: '40px', borderTop: '3px solid #3b82f6', borderRight: '3px solid #3b82f6' }} />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '40px', height: '40px', borderBottom: '3px solid #3b82f6', borderLeft: '3px solid #3b82f6' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: '40px', height: '40px', borderBottom: '3px solid #3b82f6', borderRight: '3px solid #3b82f6' }} />
+          </motion.div>
+
+          {/* Main Scanning Light */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              animate={{
+                x: isHovered ? ['-100%', '100%'] : '-100%'
+              }}
+              transition={{
+                duration: 2,
+                ease: 'linear'
+              }}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.6) 50%, transparent 100%)',
+                boxShadow: '0 0 30px 10px rgba(59, 130, 246, 0.5)',
+                filter: 'blur(5px)'
+              }}
+            />
+
+            {/* Scanning grid overlay */}
+            <motion.div
+              animate={{
+                opacity: isHovered ? [0, 0.3, 0.3, 0] : 0
+              }}
+              transition={{
+                duration: 2,
+                times: [0, 0.2, 0.8, 1]
+              }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `
+                  linear-gradient(0deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '20px 20px'
+              }}
+            />
+
+            {/* Horizontal Scanning Lines */}
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  y: isHovered ? ['-10%', '110%'] : '-10%',
+                  opacity: isHovered ? [0, 1, 1, 0] : 0
+                }}
+                transition={{
+                  duration: 2,
+                  delay: i * 0.3,
+                  times: [0, 0.1, 0.9, 1]
+                }}
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: 'rgba(59, 130, 246, 0.8)',
+                  boxShadow: '0 0 10px rgba(59, 130, 246, 0.8)'
+                }}
+              />
+            ))}
+          </motion.div>
+
+          {/* Face Detection Box - On Hover */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1.5 }}
+            animate={{
+              opacity: isHovered ? [0, 1, 1, 0] : 0,
+              scale: isHovered ? [1.5, 1, 1, 1] : 1.5
+            }}
+            transition={{
+              duration: 2,
+              times: [0, 0.3, 0.7, 1]
+            }}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '120px',
+              height: '120px',
+              border: '2px solid #3b82f6',
+              borderRadius: '8px',
+              boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)'
+            }}
+          />
+
+          {/* Status Text */}
+          <motion.div
+            animate={{
+              opacity: isHovered ? [0, 1, 1, 0] : 0
+            }}
+            transition={{
+              duration: 2,
+              times: [0, 0.2, 0.8, 1]
+            }}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              background: 'rgba(15, 23, 42, 0.9)',
+              padding: '8px 16px',
+              borderRadius: '20px',
+              border: '1px solid rgba(59, 130, 246, 0.5)',
+              color: '#3b82f6',
+              fontSize: '12px',
+              fontWeight: '600',
+              letterSpacing: '1px'
+            }}
+          >
+            <motion.span
+              animate={{ opacity: [1, 0.5, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              AUTHENTICATING...
+            </motion.span>
+          </motion.div>
+
+          {/* Verified Checkmark */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: isHovered ? [0, 0, 0, 1, 1, 0] : 0,
+              scale: isHovered ? [0, 0, 0, 1.2, 1, 1] : 0
+            }}
+            transition={{
+              duration: 2.5,
+              times: [0, 0.6, 0.7, 0.8, 0.9, 1]
+            }}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              background: 'rgba(34, 197, 94, 0.95)',
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 0 30px rgba(34, 197, 94, 0.6)'
+            }}
+          >
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
+              <motion.path
+                d="M5 13l4 4L19 7"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: isHovered ? [0, 0, 0, 1] : 0 }}
+                transition={{ duration: 2.5, times: [0, 0.7, 0.75, 1] }}
+              />
+            </svg>
+          </motion.div>
+
+          {/* Particle Effects */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{
+                opacity: isHovered ? [0, 1, 0] : 0,
+                scale: isHovered ? [0, 1, 0] : 0,
+                x: isHovered ? [0, (Math.cos((i / 8) * Math.PI * 2) * 100)] : 0,
+                y: isHovered ? [0, (Math.sin((i / 8) * Math.PI * 2) * 100)] : 0
+              }}
+              transition={{
+                duration: 1.5,
+                delay: 0.5 + i * 0.1,
+                times: [0, 0.5, 1]
+              }}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '6px',
+                height: '6px',
+                background: '#3b82f6',
+                borderRadius: '50%',
+                boxShadow: '0 0 10px rgba(59, 130, 246, 0.8)'
+              }}
+            />
+          ))}
         </div>
       )}
     </motion.div>
