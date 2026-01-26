@@ -6,6 +6,47 @@
 
 @layer base {
   :root {
+    --background: 240 10% 98%;
+    --foreground: 240 10% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+
+    --primary: 270 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 10% 90%;
+    --secondary-foreground: 240 10% 4%;
+
+    --muted: 240 10% 90%;
+    --muted-foreground: 240 10% 40%;
+
+    --accent: 175 70% 40%;
+    --accent-foreground: 240 10% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 90%;
+    --input: 240 10% 90%;
+    --ring: 270 70% 50%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --lavender: 270 70% 60%;
+    --lavender-glow: 270 70% 50%;
+    --teal: 175 70% 40%;
+    --teal-glow: 175 70% 30%;
+    --purple-deep: 270 50% 90%;
+    --glass-bg: 240 10% 95%;
+    --glass-border: 240 10% 85%;
+  }
+
+  .dark {
     --background: 240 10% 4%;
     --foreground: 240 10% 95%;
 

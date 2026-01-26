@@ -10,9 +10,9 @@ import inventoryImage from "@/assets/project-inventory.jpg";
 const projects = [
   {
     title: "Pet Shop Website",
-    description: "A complete e-commerce platform for browsing and purchasing pet products. Features product catalogs, shopping cart, and user authentication.",
+    description: "Developed a responsive e-commerce platform with authentication and cart management, reducing checkout errors and improving customer retention. Designed intuitive UI with product categories and filters for a seamless shopping experience.",
     image: petshopImage,
-    tech: ["HTML", "CSS", "JavaScript", "PHP", "XAMPP"],
+    tech: ["HTML", "CSS", "JavaScript", "React.js", "Authentication"],
     link: "#",
   },
   {
@@ -24,9 +24,9 @@ const projects = [
   },
   {
     title: "Inventory Management System",
-    description: "Web-based system for managing product inventory, tracking sales, and monitoring stock levels. Includes reporting and analytics features.",
+    description: "Built a PHP/MySQL inventory management system with automated stock tracking and demand forecasting, reducing manual errors by 40% and enabling data-driven decision-making.",
     image: inventoryImage,
-    tech: ["PHP", "MySQL", "HTML", "CSS", "XAMPP"],
+    tech: ["PHP", "MySQL", "Inventory Tracking", "Demand Forecasting"],
     link: "#",
   },
 ];
@@ -51,7 +51,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60" />
-        
+
         {/* Hover overlay */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -73,7 +73,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         <h3 className="font-heading text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
           {project.title}
         </h3>
-        
+
         <p className="text-muted-foreground text-sm leading-relaxed mb-4">
           {project.description}
         </p>

@@ -33,32 +33,24 @@ const About = () => {
             <Sparkles className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
             <div>
               <p className="text-lg text-foreground/90 leading-relaxed mb-6">
-                Hi there! I'm <span className="text-primary font-semibold">Devi Sri Dadi</span>, 
-                a passionate Computer Science student at Vignan's Institute of Information Technology, 
-                Visakhapatnam. I believe in creating technology that feels human — elegant, 
-                intuitive, and meaningful.
+                Highly motivated and dedicated fresher with a strong academic background in <span className="text-primary font-semibold">Computer Science</span> and a keen interest in software development.
               </p>
-              
+
               <p className="text-muted-foreground leading-relaxed mb-6">
-                My journey in tech revolves around two exciting domains: <span className="text-accent">Web Development</span> and 
-                <span className="text-accent"> Artificial Intelligence</span>. I love building beautiful, responsive websites 
-                that deliver seamless user experiences, while also exploring the fascinating world of 
-                machine learning and predictive analytics.
+                I possess solid foundational knowledge in programming, web technologies, and database management, along with hands-on experience gained through academic projects and internships. I enjoy solving problems, learning new skills, and working in collaborative environments.
               </p>
-              
+
               <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, working on 
-                creative projects, or learning something new. I believe in continuous growth, 
-                collaboration, and building solutions that make a difference.
+                I am eager to begin my professional journey where I can apply my technical abilities, grow continuously, and contribute positively to the organization’s goals.
               </p>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-3 mt-8 pt-8 border-t border-border">
-            <span className="tech-chip">🎓 B.Tech CSE</span>
-            <span className="tech-chip">📍 Visakhapatnam</span>
-            <span className="tech-chip">💻 Web Developer</span>
-            <span className="tech-chip">🤖 AI Enthusiast</span>
+            <span className="tech-chip">🎓 GPA: 8.4</span>
+            <span className="tech-chip">📍 Anakapalli, AP</span>
+            <span className="tech-chip">📧 devisricm011@gmail.com</span>
+            <span className="tech-chip">📱 +91 7075382343</span>
           </div>
 
           <motion.div

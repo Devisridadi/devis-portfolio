@@ -3,9 +3,12 @@ import Hero from "@/components/portfolio/Hero";
 import About from "@/components/portfolio/About";
 import Stats from "@/components/portfolio/Stats";
 import Projects from "@/components/portfolio/Projects";
-import TechStack from "@/components/portfolio/TechStack";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
+import Education from "./Education";
+import Experience from "./Experience";
+import Skills from "./Skills";
+import Certifications from "./Certifications";
 
 const Index = () => {
   return (
@@ -15,8 +18,11 @@ const Index = () => {
         <Hero />
         <About />
         <Stats />
+        <Experience />
         <Projects />
-        <TechStack />
+        <Skills />
+        <Education />
+        <Certifications />
         <Contact />
       </main>
       <Footer />
