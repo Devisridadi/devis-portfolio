@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Download, Sparkles } from "lucide-react";
+import { Download, Sparkles, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const About = () => {
@@ -65,16 +65,26 @@ const About = () => {
             transition={{ delay: 0.5 }}
             className="mt-8 text-center"
           >
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 glow-button cursor-pointer"
+                asChild
+              >
+                <a href="https://docs.google.com/document/d/1Eiz63Ot7mpUeEM2fmG_rtqMd2nXDRlFaoAA983O6Cyk/export?format=pdf" download>
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-primary/50 text-primary hover:bg-primary/10 glow-button cursor-pointer"
                 asChild
               >
-                <a href="/resume.pdf" download="Devi_Sri_Dadi_Resume.pdf">
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Resume
+                <a href="https://docs.google.com/document/d/1Eiz63Ot7mpUeEM2fmG_rtqMd2nXDRlFaoAA983O6Cyk/preview" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  View Resume
                 </a>
               </Button>
             </div>

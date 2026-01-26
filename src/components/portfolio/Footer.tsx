@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -26,12 +26,7 @@ const Footer = () => {
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
           </a>
         </div>
-        <p className="text-muted-foreground text-sm flex items-center justify-center gap-2">
-          <span>Crafted with</span>
-          <Heart className="w-4 h-4 text-primary fill-primary animate-pulse" />
-          <span>by</span>
-          <span className="gradient-text font-medium">Devi Sri Dadi</span>
-        </p>
+
         <p className="text-muted-foreground/60 text-xs mt-2">
           Computer Science Student • Web Developer • AI Enthusiast
         </p>

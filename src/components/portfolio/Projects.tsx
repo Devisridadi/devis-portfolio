@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Cat, Dog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import petshopImage from "@/assets/project-petshop.jpg";
 import heartImage from "@/assets/project-heart.jpg";
@@ -41,7 +41,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.15 }}
-      className="glass-card-hover overflow-hidden group"
+      className="glass-card-hover overflow-hidden group relative"
     >
       {/* Project Image */}
       <div className="relative h-48 md:h-56 overflow-hidden">
@@ -56,7 +56,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         <motion.div
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
-          className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
         >
           <Button
             size="sm"
@@ -87,6 +87,47 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           ))}
         </div>
       </div>
+
+      {/* Pet Shop Animation - Running AROUND the card */}
+      {project.title === "Pet Shop Website" && (
+        <div className="absolute inset-0 pointer-events-none overflow-visible" style={{ zIndex: 100 }}>
+          {/* Running Cat - Horizontal 3D Loop */}
+          <motion.div
+            className="absolute bottom-8"
+            animate={{
+              x: [-20, 450],
+              y: [0, -15, 0, -20, 0, -15, 0, -25, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+
+            style={{ width: '70px', height: '70px' }}
+          >
+            <div className="cat-run" />
+          </motion.div>
+
+          {/* Running Dog - Horizontal 3D Loop (delayed) */}
+          <motion.div
+            className="absolute bottom-8"
+            animate={{
+              x: [-100, 370],
+              y: [0, -12, 0, -18, 0, -12, 0, -22, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+
+            style={{ width: '80px', height: '80px' }}
+          >
+            <div className="dog-run" />
+          </motion.div>
+        </div>
+      )}
     </motion.div>
   );
 };
