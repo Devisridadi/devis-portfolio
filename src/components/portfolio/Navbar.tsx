@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -33,11 +33,10 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/80 backdrop-blur-xl border-b border-border/50"
+        : "bg-transparent"
+        }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -48,9 +47,12 @@ const Navbar = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           whileHover={{ scale: 1.05 }}
-          className="font-heading text-xl font-bold gradient-text cursor-pointer"
+          className="flex items-center gap-2 cursor-pointer group"
         >
-          Devi Sri
+          <div className="bg-primary/10 p-2 rounded-lg backdrop-blur-sm border border-primary/20 transition-colors group-hover:bg-primary/20">
+            <Code2 className="h-6 w-6 text-primary" />
+          </div>
+          <span className="font-heading text-xl font-bold gradient-text">Devi Sri</span>
         </motion.a>
 
         {/* Desktop Nav */}
