@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ModeToggle } from "@/components/mode-toggle";
@@ -76,9 +76,11 @@ const Navbar = () => {
           onClick={(e) => scrollToSection(e, "#")}
           className="flex items-center gap-2 cursor-pointer group"
         >
-          <div className="bg-primary/10 p-2 rounded-lg backdrop-blur-sm border border-primary/20 transition-colors group-hover:bg-primary/20">
-            <Code2 className="h-6 w-6 text-primary" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="h-10 w-10 object-contain"
+          />
           <span className="font-heading text-xl font-bold gradient-text">Devi Sri</span>
         </a>
 
@@ -90,14 +92,14 @@ const Navbar = () => {
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
               className={`text-sm font-medium relative group transition-colors duration-200 ${activeSection === link.href.substring(1)
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               {link.label}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === link.href.substring(1)
-                  ? "w-full"
-                  : "w-0 group-hover:w-full"
+                ? "w-full"
+                : "w-0 group-hover:w-full"
                 }`} />
             </a>
           ))}
@@ -134,8 +136,8 @@ const Navbar = () => {
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
               className={`text-left py-2 transition-colors duration-200 ${activeSection === link.href.substring(1)
-                  ? "text-primary font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
+                ? "text-primary font-semibold"
+                : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               {link.label}

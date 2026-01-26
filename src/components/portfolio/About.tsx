@@ -51,6 +51,12 @@ const About = () => {
             <span className="tech-chip">📍 Anakapalli, AP</span>
             <span className="tech-chip">📧 devisricm011@gmail.com</span>
             <span className="tech-chip">📱 +91 7075382343</span>
+            <a href="https://www.linkedin.com/in/devisri-dadi-303272294/" target="_blank" rel="noopener noreferrer" className="tech-chip hover:border-primary hover:text-primary cursor-pointer">
+              🔗 LinkedIn
+            </a>
+            <a href="https://github.com/Devisridadi" target="_blank" rel="noopener noreferrer" className="tech-chip hover:border-primary hover:text-primary cursor-pointer">
+              🐙 GitHub
+            </a>
           </div>
 
           <motion.div
@@ -59,14 +65,19 @@ const About = () => {
             transition={{ delay: 0.5 }}
             className="mt-8 text-center"
           >
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary/50 text-primary hover:bg-primary/10 glow-button"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
-            </Button>
+            <div className="flex flex-col items-center gap-4">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary/50 text-primary hover:bg-primary/10 glow-button cursor-pointer"
+                asChild
+              >
+                <a href="/resume.pdf" download="Devi_Sri_Dadi_Resume.pdf">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+            </div>
           </motion.div>
         </motion.div>
       </div>

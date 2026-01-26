@@ -16,14 +16,14 @@ const contactLinks = [
     icon: Linkedin,
     label: "LinkedIn",
     value: "Connect with me",
-    href: "#",
+    href: "https://www.linkedin.com/in/devisri-dadi-303272294/",
     color: "from-blue-500 to-blue-400",
   },
   {
     icon: Github,
     label: "GitHub",
     value: "View my repos",
-    href: "#",
+    href: "https://github.com/Devisridadi",
     color: "from-gray-400 to-gray-300",
   },
 ];
@@ -36,7 +36,7 @@ const Contact = () => {
     <section id="contact" className="section-padding relative" ref={ref}>
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px]" />
-      
+
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -103,10 +103,13 @@ const Contact = () => {
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 glow-button"
+              className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 glow-button cursor-pointer"
+              asChild
             >
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
+              <a href="/resume.pdf" download="Devi_Sri_Dadi_Resume.pdf">
+                <Download className="mr-2 h-4 w-4" />
+                Download Resume
+              </a>
             </Button>
           </motion.div>
         </motion.div>
