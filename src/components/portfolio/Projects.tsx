@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import petshopImage from "@/assets/project-petshop.jpg";
 import smartvotingImage from "@/assets/project-smartvoting.jpg";
 import agrimlImage from "@/assets/project-agriml.jpg";
+import plantGrowthGif from "@/assets/plant-growth.gif";
+
 
 const projects = [
   {
@@ -397,199 +399,101 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         </div>
       )}
 
-      {/* AgriML Animation - Growing Plant & Dynamic Weather */}
+      {/* AgriML Animation - Growth Cycle (Weak to Healthy) */}
       {project.title === "AgriML" && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 100 }}>
-          {/* Growing Plant at Right Bottom */}
-          <motion.div
-            style={{
-              position: 'absolute',
-              bottom: '16px',
-              right: '16px',
-              fontSize: '56px'
-            }}
-          >
-            <motion.div
+        <div className="absolute bottom-0 right-0 pointer-events-none z-[100] w-28 h-28">
+          <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-2xl">
+            {/* Seed/Soil Base */}
+            <circle cx="50" cy="85" r="10" fill="#3D2B1F" />
+
+            {/* Stem - High Speed Growth */}
+            <motion.path
+              d="M50 85 Q50 60 50 25"
+              fill="transparent"
+              strokeLinecap="round"
+              strokeWidth="4"
+              initial={{ pathLength: 0.1, stroke: "#6B5B3B" }}
               animate={{
-                scale: [0, 1, 1, 1],
-                rotate: [0, 0, 5, -5, 0]
+                pathLength: [0.1, 1, 1, 0.1],
+                stroke: ["#6B5B3B", "#4ADE80", "#4ADE80", "#6B5B3B"]
               }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeOut"
+                times: [0, 0.4, 0.8, 1],
+                ease: "easeInOut"
               }}
-            >
-              🌱
-            </motion.div>
-          </motion.div>
+            />
 
-          {/* Weather Icon - Centered Left */}
-          <div style={{
-            position: 'absolute',
-            top: '47%',
-            left: '25%',
-            transform: 'translateY(-50%)',
-            fontSize: '40px'
-          }}>
-            {/* Sun Icon with Heat Waves */}
-            <motion.div
+            {/* Leaf 1 (Left) - Fast transition */}
+            <motion.path
+              d="M50 70 Q35 60 25 70 Q35 80 50 70"
+              fill="#166534"
+              initial={{ scale: 0, opacity: 0, rotate: 15 }}
               animate={{
-                opacity: [0, 1, 1, 1, 0],
-                scale: [0.8, 1, 1, 1, 0.8]
+                scale: [0, 0, 1, 1, 0],
+                opacity: [0, 0, 1, 1, 0],
+                rotate: [15, 15, 0, 0, 15]
               }}
               transition={{
-                duration: 1,
+                duration: 3,
                 repeat: Infinity,
-                repeatDelay: 2,
-                times: [0, 0.1, 0.4, 0.9, 1]
+                times: [0, 0.2, 0.5, 0.8, 1],
+                ease: "easeInOut"
               }}
-              style={{ position: 'relative' }}
-            >
-              <motion.span
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              >
-                ☀️
-              </motion.span>
+              style={{ transformOrigin: "50px 70px" }}
+            />
 
-              {/* Heat Wave Effect */}
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    opacity: [0, 0.6, 0],
-                    y: [-20, -40],
-                    x: [0, (i - 1) * 5]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.3
-                  }}
-                  style={{
-                    position: 'absolute',
-                    top: '-10px',
-                    left: '50%',
-                    fontSize: '20px'
-                  }}
-                >
-                  🔥
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Rain Icon with Heavy Storm */}
-            <motion.div
+            {/* Leaf 2 (Right) - Fast growth */}
+            <motion.path
+              d="M50 55 Q65 45 75 55 Q65 65 50 55"
+              fill="#15803d"
+              initial={{ scale: 0, opacity: 0, rotate: -15 }}
               animate={{
-                opacity: [0, 0, 0, 0, 0, 1, 1, 1, 0],
-                scale: [0.8, 0.8, 0.8, 0.8, 0.8, 1, 1, 1, 0.8]
+                scale: [0, 0, 0, 1, 1, 0],
+                opacity: [0, 0, 0, 1, 1, 0],
+                rotate: [-15, -15, -15, 0, 0, -15]
               }}
               transition={{
-                duration: 1,
+                duration: 3,
                 repeat: Infinity,
-                repeatDelay: 2,
-                delay: 1,
-                times: [0, 0.3, 0.35, 0.4, 0.45, 0.5, 0.7, 0.95, 1]
+                times: [0, 0.2, 0.4, 0.7, 0.8, 1],
+                ease: "easeInOut"
               }}
-              style={{ position: 'absolute', top: 0, left: 0 }}
-            >
-              🌧️
+              style={{ transformOrigin: "50px 55px" }}
+            />
 
-              {/* Heavy Rain Drops */}
-              {[...Array(12)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    opacity: [0, 1, 1, 0],
-                    y: [0, 80]
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    repeat: Infinity,
-                    delay: i * 0.1
-                  }}
-                  style={{
-                    position: 'absolute',
-                    top: '30px',
-                    left: `${-20 + i * 7}px`,
-                    fontSize: '18px'
-                  }}
-                >
-                  💧
-                </motion.div>
-              ))}
-
-              {/* Lightning Effect */}
-              <motion.div
-                animate={{
-                  opacity: [0, 1, 0, 1, 0],
-                  scale: [1, 1.5, 1, 1.5, 1]
-                }}
-                transition={{
-                  duration: 0.5,
-                  repeat: Infinity,
-                  repeatDelay: 2
-                }}
-                style={{
-                  position: 'absolute',
-                  top: '10px',
-                  left: '20px',
-                  fontSize: '24px'
-                }}
-              >
-                ⚡
-              </motion.div>
-            </motion.div>
-
-            {/* Snow Icon with Heavy Snowfall */}
-            <motion.div
+            {/* Healthy Bloom (Flower) - High speed bloom */}
+            <motion.g
+              initial={{ scale: 0, opacity: 0 }}
               animate={{
-                opacity: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
-                scale: [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1, 1, 1, 0.8]
+                scale: [0, 0, 0, 1.2, 1, 1, 0],
+                opacity: [0, 0, 0, 1, 1, 1, 0]
               }}
               transition={{
-                duration: 1,
+                duration: 3,
                 repeat: Infinity,
-                repeatDelay: 2,
-                delay: 2,
-                times: [0, 0.6, 0.62, 0.64, 0.66, 0.68, 0.7, 0.72, 0.74, 0.76, 0.78, 0.85, 0.98, 1]
+                times: [0, 0.4, 0.6, 0.75, 0.8, 0.9, 1],
+                ease: "backOut"
               }}
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ transformOrigin: "50px 25px" }}
             >
-              ❄️
-
-              {/* Heavy Snowflakes */}
-              {[...Array(20)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    opacity: [0, 1, 1, 0],
-                    y: [0, 90],
-                    x: [0, (i % 2 === 0 ? 15 : -15)],
-                    rotate: [0, 360]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.15,
-                    ease: "linear"
-                  }}
-                  style={{
-                    position: 'absolute',
-                    top: '30px',
-                    left: `${-30 + i * 6}px`,
-                    fontSize: '16px'
-                  }}
-                >
-                  ❄️
-                </motion.div>
+              <circle cx="50" cy="25" r="5" fill="#EAB308" />
+              {[0, 60, 120, 180, 240, 300].map((angle) => (
+                <circle
+                  key={angle}
+                  cx={50 + Math.cos((angle * Math.PI) / 180) * 8}
+                  cy={25 + Math.sin((angle * Math.PI) / 180) * 8}
+                  r="4"
+                  fill="#FDE047"
+                  opacity="0.9"
+                />
               ))}
-            </motion.div>
-          </div>
+            </motion.g>
+          </svg>
         </div>
       )}
+
     </motion.div>
   );
 };
