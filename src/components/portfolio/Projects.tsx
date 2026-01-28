@@ -13,9 +13,9 @@ import plantGrowthGif from "@/assets/plant-growth.gif";
 const projects = [
   {
     title: "Pet Shop Website",
-    description: "Developed a responsive e-commerce platform with authentication and cart management, reducing checkout errors and improving customer retention. Designed intuitive UI with product categories and filters for a seamless shopping experience.",
+    description: "Developed a dynamic e-commerce platform using PHP and MySQL, featuring category-based product displays, integrated cart management, and a secure checkout process to enhance the user shopping experience.",
     image: petshopImage,
-    tech: ["HTML", "CSS", "JavaScript", "React.js", "Authentication"],
+    tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     link: "#",
   },
   {
@@ -34,7 +34,15 @@ const projects = [
   },
   {
     title: "AgriML",
-    description: "Integrated Crop Recommendation, Soil Correction & Fertilizer Advisory System using Machine Learning. Employs Random Forest and XGBoost ensemble models for accurate predictions based on soil and climate data, providing farmer-friendly decision support.",
+    description: (
+      <>
+        Integrated Crop Recommendation, Soil Correction & Fertilizer Advisory System using Machine Learning{" "}
+        <span className="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/30 rounded-full ml-1">
+          Currently in Progress
+        </span>
+        . Employs Random Forest and XGBoost ensemble models for accurate predictions based on soil and climate data.
+      </>
+    ),
     image: agrimlImage,
     tech: ["Python", "Machine Learning", "Random Forest", "XGBoost", "Data Visualization"],
     link: "#",
@@ -87,9 +95,9 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           {project.title}
         </h3>
 
-        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+        <div className="text-muted-foreground text-sm leading-relaxed mb-4">
           {project.description}
-        </p>
+        </div>
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2">
