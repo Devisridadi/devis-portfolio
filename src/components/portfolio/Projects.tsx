@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Cat, Dog } from "lucide-react";
+import { ExternalLink, Cat, Dog, Sparkles, FileText, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import petshopImage from "@/assets/project-petshop.jpg";
 import smartvotingImage from "@/assets/project-smartvoting.jpg";
 import agrimlImage from "@/assets/project-agriml.jpg";
+import docintelImage from "@/assets/project-docintel.png";
 import plantGrowthGif from "@/assets/plant-growth.gif";
 
 
@@ -15,6 +16,13 @@ const projects = [
     description: "Developed a responsive e-commerce platform with authentication and cart management, reducing checkout errors and improving customer retention. Designed intuitive UI with product categories and filters for a seamless shopping experience.",
     image: petshopImage,
     tech: ["HTML", "CSS", "JavaScript", "React.js", "Authentication"],
+    link: "#",
+  },
+  {
+    title: "DocIntel",
+    description: "Intelligent Document Search & Retrieval-Augmented Generation (RAG) system for document-based question answering. Enables users to upload documents, perform semantic search using embeddings and vector similarity, and generate accurate, context-aware responses using a Large Language Model.",
+    image: docintelImage,
+    tech: ["Node.js", "Express.js", "React", "MongoDB Atlas", "LangChain", "RAG", "OpenRouter LLM"],
     link: "#",
   },
   {
@@ -173,6 +181,86 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           >
             <div className="dog-run" />
           </motion.div>
+        </div>
+      )}
+
+      {/* DocIntel Animation - Document Scanning & AI Synthesis */}
+      {project.title === "DocIntel" && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 100 }}>
+          {/* Stylized Document Background (Subtle lines) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-48 opacity-10 flex flex-col gap-3 p-4 border border-primary/20 rounded-lg bg-primary/5">
+            {[...Array(10)].map((_, i) => (
+              <div key={i} className="h-1.5 bg-primary/30 rounded-full" style={{ width: `${Math.random() * 40 + 60}%` }} />
+            ))}
+          </div>
+
+          {/* Vertical Scanning Line removed as per user request */}
+
+          {/* Floating Data Tokens (Particles) */}
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1.5 h-1.5 bg-cyan-400 rounded-sm"
+              initial={{ opacity: 0, x: "50%", y: "50%" }}
+              animate={{
+                opacity: [0, 0.8, 0],
+                x: ["50%", `${Math.random() * 80 + 10}%`],
+                y: ["50%", `${Math.random() * 80 + 10}%`],
+                scale: [0, 1.2, 0],
+                rotate: [0, 180]
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                delay: i * 0.15,
+                ease: "circOut"
+              }}
+            />
+          ))}
+
+          {/* Central Search/Intelligence Pulse */}
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+            animate={{
+              scale: [0.9, 1.1, 0.9],
+              opacity: [0.4, 0.8, 0.4]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <div className="relative">
+              <Sparkles className="w-16 h-16 text-primary absolute -top-8 -right-8 opacity-60" />
+              <Search className="w-12 h-12 text-primary/80" />
+              <FileText className="w-8 h-8 text-cyan-400 absolute -bottom-4 -left-4 opacity-70" />
+            </div>
+          </motion.div>
+
+          {/* Connection Lines Effect */}
+          <svg className="absolute inset-0 w-full h-full opacity-20">
+            <motion.path
+              d="M20,100 Q150,50 280,100"
+              stroke="currentColor"
+              strokeWidth="1"
+              fill="none"
+              className="text-primary"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: [0, 1, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
+            <motion.path
+              d="M20,150 Q150,200 280,150"
+              stroke="currentColor"
+              strokeWidth="1"
+              fill="none"
+              className="text-cyan-400"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: [0, 1, 0] }}
+              transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+            />
+          </svg>
         </div>
       )}
 
