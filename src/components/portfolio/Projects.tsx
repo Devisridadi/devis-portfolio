@@ -16,7 +16,7 @@ const projects = [
     description: "Developed a dynamic e-commerce platform using PHP and MySQL, featuring category-based product displays, integrated cart management, and a secure checkout process to enhance the user shopping experience.",
     image: petshopImage,
     tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    link: "#",
+    link: "http://happytailes.infinityfreeapp.com/?i=1",
   },
   {
     title: "DocIntel",
@@ -79,13 +79,15 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           whileHover={{ opacity: 1 }}
           className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
         >
-          <Button
-            size="sm"
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
-          >
-            <ExternalLink className="mr-2 h-4 w-4" />
-            View Project
-          </Button>
+          <a href={project.link} target="_blank" rel="noopener noreferrer">
+            <Button
+              size="sm"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <ExternalLink className="mr-2 h-4 w-4" />
+              View Project
+            </Button>
+          </a>
         </motion.div>
       </div>
 
